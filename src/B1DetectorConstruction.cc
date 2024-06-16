@@ -203,7 +203,7 @@ new G4LogicalVolume(Cover2Solid, PMMAcover2, "LogicSolid6");
   }    
       
 
-G4Box* solidEnv4 = new G4Box("Pixeled", 0.068*cm, 0.068*cm, 0.00118*cm);    
+G4Box* solidEnv4 = new G4Box("Pixeled1", 0.068*cm, 0.068*cm, 0.00118*cm);    
 G4LogicalVolume* Pixeledminusz =                         
 new G4LogicalVolume(solidEnv4, world_mat, "LogicSolid7");                       
    for (int i = 1; i < 35; i++){
@@ -219,7 +219,7 @@ new G4LogicalVolume(solidEnv4, world_mat, "LogicSolid8");
                          new G4PVPlacement(0,G4ThreeVector((-2.38+(0.136*j))*cm,(-2.38+(0.136*i))*cm,2.39*cm), Pixeledplusz,"Pixeledplusz", logicWorld, false, j+(i-1)*34, checkOverlaps);          //                            
   }
   }
-G4Box* solidEnv5 = new G4Box("Pixeled", 0.00118*cm, 0.068*cm,0.068*cm);     //its size
+G4Box* solidEnv5 = new G4Box("Pixeled2", 0.00118*cm, 0.068*cm,0.068*cm);     //its size
 G4LogicalVolume* Pixeledminusx =                         
 new G4LogicalVolume(solidEnv5, world_mat, "LogicSolid9");                        
    for (int i = 1; i < 35; i++){
