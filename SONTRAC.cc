@@ -42,9 +42,10 @@
 #include "G4EmStandardPhysics_option4.hh"
 #include "G4VisExecutive.hh"
 #include "G4UIExecutive.hh"
-
 #include "Randomize.hh"
-
+#include <iostream>
+#include <chrono>
+#include <thread>
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 int main(int argc,char** argv)
@@ -70,6 +71,7 @@ int main(int argc,char** argv)
   // Set mandatory initialization classes
   //
   // Detector construction
+  auto start = std::chrono::high_resolution_clock::now();
   runManager->SetUserInitialization(new B1DetectorConstruction());
 
   // Physics list
@@ -111,7 +113,14 @@ int main(int argc,char** argv)
   // Free the store: user actions, physics_list and detector_description are
   // owned and deleted by the run manager, so they should not be deleted 
   // in the main() program !
-  
+  G4cout << "-------------------------------------------------------" << G4endl;
+  G4cout << "--------------------Simulation ends--------------------" << G4endl;
+  G4cout << "-------------------------------------------------------" << G4endl;
+  auto end = std::chrono::high_resolution_clock::now();
+
+  auto int_s = std::chrono::duration_cast<std::chrono::seconds>(end - start);
+
+  std::cout << "The execution time is " << int_s.count() << " seconds." << std::endl;  
   delete visManager;
   delete runManager;
 }

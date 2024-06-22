@@ -44,7 +44,6 @@ using namespace std;
 B1PrimaryGeneratorAction::B1PrimaryGeneratorAction()
 : G4VUserPrimaryGeneratorAction(),
   fParticleGun(0)
-//  fEnvelopeBox(0)
 {
   G4int n_particle = 1;
   fParticleGun  = new G4ParticleGun(n_particle);

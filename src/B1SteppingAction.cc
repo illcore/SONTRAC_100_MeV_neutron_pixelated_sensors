@@ -48,8 +48,7 @@ using namespace std;
 
 B1SteppingAction::B1SteppingAction(B1EventAction* eventAction)
 : G4UserSteppingAction(),
-  fEventAction(eventAction),
-  fScoringVolume(0)
+  fEventAction(eventAction)
 {}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

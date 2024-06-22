@@ -51,7 +51,6 @@ class B1SteppingAction : public G4UserSteppingAction
 
   private:
     B1EventAction*  fEventAction;
-    G4LogicalVolume* fScoringVolume;
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

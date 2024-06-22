@@ -54,14 +54,13 @@ B1RunAction::~B1RunAction()
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void B1RunAction::BeginOfRunAction(const G4Run*)
-{ 
+{
   // inform the runManager to save random number seed
   G4RunManager::GetRunManager()->SetRandomNumberStore(false);
 
   // reset accumulables to their initial values
   G4AccumulableManager* accumulableManager = G4AccumulableManager::Instance();
   accumulableManager->Reset();
-
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -78,37 +77,7 @@ void B1RunAction::EndOfRunAction(const G4Run* run)
   const B1DetectorConstruction* detectorConstruction
    = static_cast<const B1DetectorConstruction*>
      (G4RunManager::GetRunManager()->GetUserDetectorConstruction());
-  // Run conditions
-  //  note: There is no primary generator action object for "master"
-  //        run manager for multi-threaded mode.
-  const B1PrimaryGeneratorAction* generatorAction
-   = static_cast<const B1PrimaryGeneratorAction*>
-     (G4RunManager::GetRunManager()->GetUserPrimaryGeneratorAction());
-  G4String runCondition;
-  if (generatorAction)
-  {
-    const G4ParticleGun* particleGun = generatorAction->GetParticleGun();
-    runCondition += particleGun->GetParticleDefinition()->GetParticleName();
-    runCondition += " of ";
-  }
-        
-  // Print
-  //  
-  if (IsMaster()) {
-    G4cout
-     << G4endl
-     << "--------------------End of Global Run-----------------------";
-  }
-  G4cout
-     << G4endl
-     << " The run is terminated."
-     << G4endl;
-  G4cout
-     << G4endl
-     << "--------------------End of Global Run-----------------------"
-     << G4endl;
 }
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
